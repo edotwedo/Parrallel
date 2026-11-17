@@ -1,0 +1,11 @@
+{
+  // Parallel community board. Static site in public/, API + moderation in src/worker.js.
+  // Secrets (never in this file): REVIEW_SECRET, NOTIFY_FROM, NOTIFY_TO via `npx wrangler secret put`.
+  "name": "parrallel",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-11-16",
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": ["/api/*", "/review"] },
+  "d1_databases": [{ "binding": "DB", "database_name": "parallel-db", "database_id": "a2137f14-0634-4e78-907f-cdcd88721922" }],
+  "send_email": [{ "name": "NOTIFY" }],
+  "observability": { "enabled": true }
+}
